@@ -1,0 +1,20 @@
+// Fonts
+@import url('https://fonts.googleapis.com/css?family=Nunito');
+
+// Variables
+@import 'variables';
+
+// Bootstrap
+@import '~bootstrap/scss/bootstrap';
+
+body {
+    font-size: 17px;
+}
+
+ul.navbar-nav>li>a.nav-link {
+    font-size: 18px;
+    font-weight: 500;
+}
+.row.categories>div {
+    min-height: 100px;
+}
