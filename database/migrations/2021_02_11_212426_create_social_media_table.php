@@ -15,11 +15,14 @@ class CreateSocialMediaTable extends Migration
     {
         Schema::create('social_media', function (Blueprint $table) {
             $table->id();
-            $table->bigInteger('user_id')->index;
+            $table->unsignedBigInteger('user_id')->index;
             $table->string('name');
             $table->string('url');
             $table->string('icon');
             $table->timestamps();
+
+            $table->foreign('user_id')->references('id')->on('users');
+
         });
     }
 

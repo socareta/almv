@@ -53,10 +53,10 @@ class User extends Authenticatable implements MustVerifyEmail
     ];
 
 
-    public function course(){
+    public function courses(){
         return $this->hasMany(Course::class);
     }
-    public function blog(){
+    public function blogs(){
         return $this->hasMany(Blog::class);
     }
 
@@ -71,7 +71,7 @@ class User extends Authenticatable implements MustVerifyEmail
         );
     }
 
-    public function media(){
+    public function medias(){
         return $this->hasMany(Media::class,'mediaable');
     }
 
@@ -79,7 +79,11 @@ class User extends Authenticatable implements MustVerifyEmail
         return $this->hasMany(Notification::class);
     }
 
-    public function socialMedia(){
+    public function socialMedias(){
         return $this->hasMany(SocialMedia::class);
+    }
+
+    public function tags(){
+        return $this->hasMany(Tag::class);
     }
 }

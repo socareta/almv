@@ -15,13 +15,16 @@ class CreateLessonsTable extends Migration
     {
         Schema::create('lessons', function (Blueprint $table) {
             $table->id();
-            $table->bigInteger('course_id');
-            $table->integer('status_id');
+            $table->unsignedBigInteger('course_id');
+            $table->unsignedBigInteger('status');
             
             $table->string('title');
             $table->mediumText('description');
             $table->unsignedInteger('duration');//in minutes
             $table->timestamps();
+
+            $table->foreign('status')->references('id')->on('metas');
+            $table->foreign('course_id')->references('id')->on('courses');
         });
     }
 

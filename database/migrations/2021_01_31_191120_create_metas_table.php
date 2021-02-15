@@ -16,7 +16,7 @@ class CreateMetasTable extends Migration
         Schema::create('metas', function (Blueprint $table) {
             $table->id();
             $table->string('name')->index();
-            $table->integer('code',5)->default(0)->index();
+            $table->integer('code')->index()->default(0);
             $table->string('value');
             $table->text('remark')->nullable(true);
             $table->string('icon_font')->nullable(true);

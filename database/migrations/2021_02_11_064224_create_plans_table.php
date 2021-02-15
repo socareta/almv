@@ -20,8 +20,10 @@ class CreatePlansTable extends Migration
             $table->unsignedInteger('duration');//in days
             $table->unsignedInteger('price');
             $table->unsignedInteger('total_course')->default(0);
-            $table->integer('status');
+            $table->unsignedBigInteger('status');
             $table->timestamps();
+
+            $table->foreign('status')->references('id')->on('metas');
         });
     }
 

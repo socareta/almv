@@ -14,9 +14,13 @@ class CreateUserPlansTable extends Migration
     public function up()
     {
         Schema::create('user_plans', function (Blueprint $table) {
-            $table->bigInteger('user_id')->index();
-            $table->bigInteger('plan_id')->index();
+            $table->unsignedBigInteger('user_id')->index();
+            $table->unsignedBigInteger('plan_id')->index();
             $table->timestamps();
+
+            $table->foreign('user_id')->references('id')->on('users');
+            $table->foreign('plan_id')->references('id')->on('plans');
+            
         });
     }
 

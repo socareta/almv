@@ -16,13 +16,13 @@ class CreateCoursesTable extends Migration
         Schema::create('courses', function (Blueprint $table) {
             $table->id();
 
-            $table->bigInteger('user_id');
-            $table->bigInteger('partner_id')->default(0); //user_id
-            $table->integer('category_id'); 
-            $table->integer('category_parent_id')->default(0);
-            $table->integer('status_id');  //meta =>status_course
-            $table->integer('dificulty'); //meta=>dificulty
-            $table->integer('intensity'); //meta=>intensity
+            $table->unsignedBigInteger('user_id');
+            $table->unsignedBigInteger('partner_id')->default(0); //user_id
+            $table->unsignedBigInteger('category_id'); 
+            $table->unsignedBigInteger('category_parent_id')->default(0);
+            $table->unsignedBigInteger('status');  //meta =>status_course
+            $table->unsignedBigInteger('dificulty'); //meta=>dificulty
+            $table->unsignedBigInteger('intensity'); //meta=>intensity
             
             $table->string('title');
             $table->string('slug');
@@ -37,6 +37,15 @@ class CreateCoursesTable extends Migration
             $table->integer('member_count')->nullable(); //automatic adjust when the course has bought
 
             $table->timestamps();
+
+            $table->foreign('user_id')->references('id')->on('users');
+            $table->foreign('partner_id')->references('id')->on('users');
+            $table->foreign('category_id')->references('id')->on('categories');
+            $table->foreign('category_parent_id')->references('id')->on('categories');
+            $table->foreign('status')->references('id')->on('metas');
+            $table->foreign('dificulty')->references('id')->on('metas');
+            $table->foreign('intensity')->references('id')->on('metas');
+
         });
     }
 
